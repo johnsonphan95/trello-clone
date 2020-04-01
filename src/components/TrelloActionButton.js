@@ -1,5 +1,7 @@
 import React from 'react';
 import Textarea from 'react-textarea-autosize';
+import { connect } from 'react-redux';
+import { addList } from '../actions';
 
 class TrelloActionButton extends React.Component {
 
@@ -24,6 +26,17 @@ class TrelloActionButton extends React.Component {
     this.setState({
       text: e.target.value
     })
+  }
+
+  handleAddList = () => {
+    const { dispatch } = this.props; 
+    const { text } = this.state;
+  
+    if (text) {
+      dispatch(addList(text))
+    }
+    
+    return;
   }
 
   renderAddButton = () => {
@@ -71,10 +84,9 @@ class TrelloActionButton extends React.Component {
             }}
           />
         </div>
-        <div style={{
-          ...styles.button2,
-          backgroundColor: "#5aac44"
-        }}
+        <div 
+          style={{...styles.button2, backgroundColor: "#5aac44"}}
+          onMouseDown={this.handleAddList}
         >
           {buttonTitle}
         </div>
@@ -104,4 +116,4 @@ const styles = {
   }
 }
 
-export default TrelloActionButton;
+export default connect()(TrelloActionButton);

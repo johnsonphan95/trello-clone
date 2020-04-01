@@ -3,6 +3,7 @@ import TrelloCard from './TrelloCard';
 import TrelloActionButton from './TrelloActionButton';
 
 const TrelloList = ({title, cards}) => {
+  console.log(cards)
   return (
     <div style={styles.container}>
       <h4>{title}</h4>
