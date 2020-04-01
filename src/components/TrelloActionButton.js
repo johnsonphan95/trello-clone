@@ -30,9 +30,14 @@ class TrelloActionButton extends React.Component {
     const { list } = this.props;
 
     const buttonText = list ? "Add another list" : "Add another card"
+    const buttonTextBackground = list ? 'rgba(0, 0, 0, .15)' : 'inherit';
+
     return (
       <div 
-        style={styles.button}
+        style={{
+          ...styles.button, 
+          backgroundColor: buttonTextBackground
+        }}
         onClick={this.openForm}
       >
         <p>{buttonText}</p>
@@ -45,30 +50,36 @@ class TrelloActionButton extends React.Component {
 
     const placeholder = list ? "Enter list title..." : "Enter a title for this card...";
     const buttonTitle = list ? "Add List" : "Add Card";
+    // const buttonTextBackground = list ? 'rgba(0, 0, 0, .15)' : 'inherit';
 
     return (
-    <div 
-      // style={{
-      //   minHeight: 85, 
-      //   minWidth: 272, 
-      // }}
-    >
-      <Textarea 
-        placeholder={placeholder} 
-        autoFocus 
-        // onBlur={this.closeForm}
-        value={this.state.value}
-        onChange={this.handleChange}
-        style={{
-          resize: 'none', 
-          width: 296,
-          overflow: 'hidden',
-          outline: 'none',
-          border: 'none', 
-          minHeight: 85
+      <div>
+        <div>
+          <Textarea 
+            placeholder={placeholder} 
+            autoFocus 
+            onBlur={this.closeForm}
+            value={this.state.value}
+            onChange={this.handleChange}
+            style={{
+              resize: 'none', 
+              width: 296,
+              overflow: 'hidden',
+              outline: 'none',
+              border: 'none', 
+              minHeight: 85
+            }}
+          />
+        </div>
+        <div style={{
+          ...styles.button2,
+          backgroundColor: "#5aac44"
         }}
-      />
-    </div>)
+        >
+          {buttonTitle}
+        </div>
+      </div>
+    )
   }
 
   render() {
@@ -85,6 +96,11 @@ const styles = {
     height: 36, 
     width: 272,
     paddingLeft: 10
+  }, 
+  button2: {
+    marginTop: 8, 
+    display: 'flex', 
+    alignItems: 'center'
   }
 }
 
