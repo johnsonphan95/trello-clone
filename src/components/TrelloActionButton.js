@@ -1,7 +1,7 @@
 import React from 'react';
 import Textarea from 'react-textarea-autosize';
 import { connect } from 'react-redux';
-import { addList } from '../actions';
+import { addList, addCard } from '../actions';
 
 class TrelloActionButton extends React.Component {
 
