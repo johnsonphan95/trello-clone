@@ -39,6 +39,17 @@ class TrelloActionButton extends React.Component {
     return;
   }
 
+  handleAddCard = () => {
+    const { dispatch, listId } = this.props; 
+    const { text } = this.state;
+  
+    if (text) {
+      dispatch(addCard(listId, text))
+    }
+    
+    return;
+  }
+
   renderAddButton = () => {
     const { list } = this.props;
 
@@ -86,7 +97,7 @@ class TrelloActionButton extends React.Component {
         </div>
         <div 
           style={{...styles.button2, backgroundColor: "#5aac44"}}
-          onMouseDown={this.handleAddList}
+          onMouseDown={list ? this.handleAddList : this.handleAddCard}
         >
           {buttonTitle}
         </div>
