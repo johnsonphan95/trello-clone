@@ -52,7 +52,7 @@ const listsReducer = (state = initialState, action) => {
       }
       cardId += 1; 
       const newState = state.map((list) => {
-        if (list.id === action.payload.cardId) {
+        if (list.id === action.payload.listId) {
           return {
             ...list, 
             cards: [...list.cards, newCard]
